@@ -9,7 +9,14 @@ class AgentsInfo : AppCompatActivity() {
     lateinit var binding: ActivityAgentsInfoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding
-        setContentView(R.layout.activity_agents_info)
+        binding = ActivityAgentsInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+       val Valo = intent.getParcelableExtra<ValoModel>("AgentsInfo")
+       val imgUrl = intent.getStringExtra("img")
+
+        binding.name.text= Valo?.
+
     }
 }
