@@ -1,6 +1,7 @@
 package com.example.api
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class RecylclerAdapter(val agents: List<ValoModel>):
+class RecylclerAdapter(val agents:ValoModel):
     RecyclerView.Adapter<RecylclerAdapter.ViewHolder>() {
     lateinit var context: Context
     class ViewHolder(val view: View): RecyclerView.ViewHolder(view){
@@ -25,11 +26,21 @@ class RecylclerAdapter(val agents: List<ValoModel>):
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.agents.text = agents[position].data.toString()
-            Glide.with(context).load(agents[position].data)into(holder.img)
+        holder.agents.text = agents.data[position].displayName
+            Glide.with(context).load(agents.data[position].displayIcon).into(holder.img)
+        holder.img.setOnClickListener{
+        context.startActivity(Intent(context, AgentsInfo::class.java).apply {
+            putExtra("img", agents.data[position].displayIconSmall)
+            putExtra("AgentsInfo", agents.data[position].description)
+        })
+
+
+
+
+        }
     }
 
     override fun getItemCount(): Int {
-        return agents.size
+        return agents.data.size
     }
 }

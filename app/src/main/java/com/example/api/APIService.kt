@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface ApiInterface{
     @GET("agents")
-    fun getAgents(): retrofit2.Call<List<ValoModel>>
+    fun getAgents(): retrofit2.Call<ValoModel>
 }
 
 object APIService {
@@ -17,7 +17,7 @@ object APIService {
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://valorant-api.com/v1/")
-            .addConvertorFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
         api_instance = retrofit.create(ApiInterface::class.java)
 
