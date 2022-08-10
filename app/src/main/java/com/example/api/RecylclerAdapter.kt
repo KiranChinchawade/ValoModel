@@ -27,11 +27,10 @@ class RecylclerAdapter(val agents:ValoModel):
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.agents.text = agents.data[position].displayName
-            Glide.with(context).load(agents.data[position].displayIcon).into(holder.img)
+        Glide.with(context).load(agents.data[position].displayIcon).into(holder.img)
         holder.img.setOnClickListener{
         context.startActivity(Intent(context, AgentsInfo::class.java).apply {
-            putExtra("img", agents.data[position].displayIconSmall)
-            putExtra("AgentsInfo", agents.data[position].description)
+            putExtra("info", agents.data[position])
         })
 
 
