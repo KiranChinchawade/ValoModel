@@ -13,7 +13,6 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceStatic: Bundle?) {
         super.onCreate(savedInstanceStatic)
